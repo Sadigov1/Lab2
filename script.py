@@ -1,14 +1,33 @@
-from random import*  
-n=int(input('N='))
-m=int(input('M='))
-A=[0]*n
-cem=0
-for i in range(n):
-    A[i]=[0]*m
-for x in range(n):
-    for j in range(m):
-        A[x][j]=randint(0,10)
-        if x==j :
-            cem=cem+A[x][j]
-    print(A[x])
-print('cem=',cem)
+import random
+lst = [ ]
+for i in range(10):
+    number = random.randint(0, 101) 
+    lst = lst + [number]
+print("lst = ", lst)
+f = open('file.txt', 'w')
+s=str(len(lst))
+f.write(s + '\n')
+for i in lst:
+    s = str(i) 
+    f.write(s + ' ')
+f.close()
+f=open('file.txt','r+')
+s=f.readline()
+lst2=[ ]
+for line in f:
+    #strs vektorunun yaradilmasi
+    strs=line.split(' ')
+    print('strs=',strs)
+    for s in strs:
+        if s!='':
+            lst2=lst2+[int(s)]
+print('lst2=',lst2)
+b=[ ]
+for x in lst2:
+    if x%3==0:
+        b.append(x)
+print('3-e bölunen ededler :',b)
+p=0
+for i in b:
+    p=p+i
+print('ededlerin cemi:',p)
